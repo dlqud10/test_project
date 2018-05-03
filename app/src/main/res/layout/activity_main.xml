@@ -26,15 +26,18 @@
         android:id="@+id/informText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/costText1"
         app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.097" />
 
     <EditText
         android:id="@+id/costText1"
@@ -53,12 +56,13 @@
     <EditText
         android:id="@+id/totalTextR"
         android:layout_width="126dp"
-        android:layout_height="wrap_content"
+        android:layout_height="43dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="220dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/totalTextL"
@@ -79,9 +83,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:text="Total"
         app:layout_constraintBottom_toTopOf="@+id/presentCurrencyViewL"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/equalSigntextView"
@@ -120,9 +125,10 @@
         android:layout_width="wrap_content"
         android:layout_height="17dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="120dp"
         android:text="KRW"
         app:layout_constraintBottom_toTopOf="@+id/totalTextR"
-        tools:layout_editor_absoluteX="220dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/changeCurrencyButtonTop"
@@ -138,7 +144,7 @@
         android:layout_width="59dp"
         android:layout_height="55dp"
         android:layout_marginBottom="12dp"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="40dp"
         android:text="통화변경"
         app:layout_constraintBottom_toTopOf="@+id/totalTextR"
         app:layout_constraintStart_toEndOf="@+id/presentCurrencyViewR" />
@@ -152,5 +158,20 @@
         android:text="통화변경"
         app:layout_constraintBottom_toTopOf="@+id/totalTextL"
         app:layout_constraintStart_toEndOf="@+id/presentCurrencyViewL" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="279dp"
+        android:layout_height="139dp"
+        android:layout_marginBottom="196dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:hint="cost"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
