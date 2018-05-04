@@ -4,6 +4,7 @@
  * @author 이병현
  * @date 2018.05.03
  * @version ERP v0.1
+ * @state The function of parsing json text in URL is unsuccessful
  */
 
 package com.dlqud10.user.test_api_2;
