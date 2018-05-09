@@ -15,6 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="+"
+        android:onClick="mOnFileWrite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"
@@ -160,7 +161,7 @@
         app:layout_constraintStart_toEndOf="@+id/presentCurrencyViewL" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextConfirm"
         android:layout_width="279dp"
         android:layout_height="139dp"
         android:layout_marginBottom="196dp"
@@ -173,5 +174,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.37"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/makeTextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="112dp"
+        android:text="text 생성"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
