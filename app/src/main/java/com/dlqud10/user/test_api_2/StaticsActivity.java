@@ -1,0 +1,13 @@
+package com.dlqud10.user.test_api_2;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class StaticsActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_statics);
+    }
+}

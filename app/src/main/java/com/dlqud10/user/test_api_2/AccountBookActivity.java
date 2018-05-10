@@ -1,5 +1,5 @@
 /**
- * @file MainActivity.java
+ * @file AccountBookActivity.java
  * @brief The UI of using exchange rate page
  * @author 이병현
  * @date 2018.05.09
@@ -17,7 +17,6 @@ import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,20 +26,16 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class AccountBookActivity extends AppCompatActivity {
 
 
         final static String foldername = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Test_Api";
@@ -49,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_account_book);
 
 
 
@@ -72,13 +67,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                EditText et = (EditText) findViewById(R.id.editTextConfirm);
+
 
                 URL url = null;
                 HttpURLConnection urlConnection = null;
                 BufferedInputStream buf = null;
 
-                et.append("ok2");
+
 
                 try {
 
@@ -107,9 +102,6 @@ public class MainActivity extends AppCompatActivity {
                     JsonElement curl_unit = json.get("curl_unit");
                     JsonObject curl_nm = json.getAsJsonObject("curl_nm");
                     System.out.println("curl_unit:" + curl_unit + "curl_nm:" + curl_nm);
-
-                    et.append(curl_unit + "\n");
-                    et.append(curl_nm + "\n");
 
 
                 } catch (Exception e) {
