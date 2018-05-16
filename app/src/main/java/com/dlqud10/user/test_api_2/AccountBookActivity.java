@@ -4,7 +4,7 @@
  * @author 이병현
  * @date 2018.05.09
  * @version ERP v0.2
- * @state The function of parsing json text in URL is unsuccessful , make text file had success
+ * @state  make text file had success
  */
 
 package com.dlqud10.user.test_api_2;
@@ -18,7 +18,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -38,18 +37,15 @@ import java.util.Date;
 public class AccountBookActivity extends AppCompatActivity {
 
 
-        final static String foldername = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Test_Api";
-        final static String filename = "testN!.txt";
+        final static String folder = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Test_Api";
+        final static String filename = "test.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_book);
 
-
-
-
-        Log.d("path",foldername);
+        Log.d("path", folder);
 
         Button btnMakeText = (Button) findViewById(R.id.makeTextButton);
         btnMakeText.setOnClickListener(new Button.OnClickListener() {
@@ -68,10 +64,9 @@ public class AccountBookActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-
-                URL url = null;
-                HttpURLConnection urlConnection = null;
-                BufferedInputStream buf = null;
+                URL url;
+                HttpURLConnection urlConnection;
+                BufferedInputStream bufInsTream = null;
 
 
 
@@ -86,7 +81,7 @@ public class AccountBookActivity extends AppCompatActivity {
                     BufferedReader bufReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
                     Log.d("line:", bufReader.toString());
 
-                    String line = null;
+                    String line;
                     String page = "";
 
                     while ((line = bufReader.readLine()) != null) {
@@ -116,7 +111,7 @@ public class AccountBookActivity extends AppCompatActivity {
         String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         String contents = "Log 생성 : "+now+"\n";
 
-        WriteTextFile(foldername, filename, contents);
+        WriteTextFile(folder, filename, contents);
     }
 
     //텍스트내용을 경로의 텍스트 파일에 쓰기

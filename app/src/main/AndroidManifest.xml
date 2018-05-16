@@ -12,20 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AccountBookActivity"
-                  android:label="가계부" />
-        <activity android:name=".MainPageActivity"
-                  android:label="여행 가계부">
+        <activity
+            android:name=".AccountBookActivity"
+            android:label="가계부" />
+        <activity
+            android:name=".MainPageActivity"
+            android:label="여행 가계부">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StaticsActivity"
-                  android:label="통계" />
-        <activity android:name=".DateActivity"
-                  android:label="날짜선택" />
+        <activity
+            android:name=".StaticsActivity"
+            android:label="통계" />
+        <activity
+            android:name=".DateActivity"
+            android:label="날짜선택" />
     </application>
 
 </manifest>
