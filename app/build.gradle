@@ -4,8 +4,8 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.dlqud10.user.test_api_2"
-        minSdkVersion 21
-        targetSdkVersion 21
+        minSdkVersion 17
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

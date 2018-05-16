@@ -9,23 +9,15 @@
 
 package com.dlqud10.user.test_api_2;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
+
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.google.gson.Gson;
-
-
-import java.net.*;
-import java.io.*;
 import java.util.concurrent.ExecutionException;
 
 public class MainPageActivity extends AppCompatActivity {
@@ -38,7 +30,6 @@ public class MainPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
 
 
-        TextView textview = (TextView)findViewById(R.id.textView);
         String resultText = "값이없음";
 
         try{
@@ -48,9 +39,6 @@ public class MainPageActivity extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
-        textview.setText((resultText));
-
 
         Button buttonGoStatics = findViewById(R.id.buttonGoStatics) ;
         buttonGoStatics.setOnClickListener(new Button.OnClickListener() {

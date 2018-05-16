@@ -33,19 +33,21 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 public class AccountBookActivity extends AppCompatActivity {
 
 
-        final static String folder = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Test_Api";
-        final static String filename = "test.txt";
+    static String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+    final static String folder = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Exchange Rate";
+    static String filename = now+".txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_book);
 
-        Log.d("path", folder);
+        Log.v("path", folder);
 
         Button btnMakeText = (Button) findViewById(R.id.makeTextButton);
         btnMakeText.setOnClickListener(new Button.OnClickListener() {
@@ -57,59 +59,19 @@ public class AccountBookActivity extends AppCompatActivity {
 
         });
 
-        Button btnAddList = (Button) findViewById(R.id.addListButton);
-        btnAddList.setOnClickListener(new Button.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-
-                URL url;
-                HttpURLConnection urlConnection;
-                BufferedInputStream bufInsTream = null;
-
-
-
-                try {
-
-                    //URL 지장
-                    url = new URL("https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=5bC4hLlng7kzfx5HpjA8lJFvs6ehjlV9&searchdate=&data=AP01");
-
-                    //URL 접속
-                    urlConnection = (HttpURLConnection) url.openConnection();
-
-                    BufferedReader bufReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
-                    Log.d("line:", bufReader.toString());
-
-                    String line;
-                    String page = "";
-
-                    while ((line = bufReader.readLine()) != null) {
-                        Log.d("line:", line);
-                        page += line;
-                    }
-
-                    JsonParser jsonParser = new JsonParser();
-
-                    JsonObject json = (JsonObject) jsonParser.parse(page);
-
-
-                    JsonElement curl_unit = json.get("curl_unit");
-                    JsonObject curl_nm = json.getAsJsonObject("curl_nm");
-                    System.out.println("curl_unit:" + curl_unit + "curl_nm:" + curl_nm);
-
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
     //버튼클릭
     public void mOnFileWrite(View v){
-        String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-        String contents = "Log 생성 : "+now+"\n";
+
+        String contents = null;
+        try {
+            contents = new Task().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
         WriteTextFile(folder, filename, contents);
     }
@@ -123,7 +85,6 @@ public class AccountBookActivity extends AppCompatActivity {
                 dir.mkdir();
             }
 
-            dir.createNewFile();
 
             Toast.makeText(this, "파일생성 성공~", Toast.LENGTH_SHORT).show();
 
@@ -140,36 +101,4 @@ public class AccountBookActivity extends AppCompatActivity {
             Toast.makeText(this, "파일생성 실패~", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-    /*
-    private void textFile()
-    {
-
-        String dirPath = getFilesDir().getAbsolutePath();
-        File file = new File(dirPath);
-
-        //일치하는 폴더가 없으면 생성
-        if (!file.exists() )
-        {
-            file.mkdirs();
-            Toast.makeText(this, "success", Toast.LENGTH_SHORT).show();
-        }
-
-        String testStr = "complete";
-        File savefile = new File(dirPath+"/test.txt");
-        try{
-            FileOutputStream fos = new FileOutputStream(savefile);
-            fos.write(testStr.getBytes());
-            fos.close();
-            Toast.makeText(this, " save Success", Toast.LENGTH_SHORT).show();;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    */
-
-
 }

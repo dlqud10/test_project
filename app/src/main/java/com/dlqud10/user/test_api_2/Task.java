@@ -12,6 +12,10 @@ package com.dlqud10.user.test_api_2;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -55,6 +59,28 @@ public class Task extends AsyncTask<String, String, String> {
         return receiveMsg;
     }
 
+
+  /*  public void gsonFile()
+    {
+
+        String line;
+        String page = "";
+
+        while ((line = bufReader.readLine()) != null) {
+            Log.d("line:", line);
+            page += line;
+        }
+
+        JsonParser jsonParser = new JsonParser();
+
+        JsonObject json = (JsonObject) jsonParser.parse(page);
+
+
+        JsonElement curl_unit = json.get("curl_unit");
+        JsonObject curl_nm = json.getAsJsonObject("curl_nm");
+        System.out.println("curl_unit:" + curl_unit + "curl_nm:" + curl_nm);
+    }
+    */
 }
 
 
